@@ -6,7 +6,17 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:45:02 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 13:45:03 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/08 18:10:13 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (s)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
+}
