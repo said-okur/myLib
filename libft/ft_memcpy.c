@@ -6,7 +6,7 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:18:16 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 13:44:37 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/09 15:45:27 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*s;
 
 	i = 0;
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	d = (char *)dest;
 	s = (char *)src;
 	while (i < n)

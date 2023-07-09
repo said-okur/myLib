@@ -6,56 +6,52 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:05:51 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 13:43:29 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/09 15:32:43 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	ft_digits(int num)
+static int	ft_string_leng(int num)
 {
-	unsigned int	i;
+	int	i;
 
-	i = 0;
 	if (num == 0)
-		i = 1;
-	if (num < 0)
+		return (1);
+	i = 0;
+	while (num > 0 || num < 0)
 	{
-		i++;
-		num = -num;
-	}
-	while (num > 0)
-	{
-		i++;
 		num /= 10;
+		i++;
 	}
 	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	unsigned int	digits;
-	char			*str;
+	int		len;
+	char	*str;
+	long	nbr;
 
-	digits = ft_digits(n);
-	str = (char *)malloc((digits + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	str[digits] = '\0';
-	if (n == 0)
-	{
-		str[0] = '0';
-		return (str);
-	}
+	nbr = n;
+	len = ft_string_leng(nbr);
 	if (n < 0)
 	{
-		str[0] = '-';
-		n = -n;
+		len++;
+		nbr *= -1;
 	}
-	while (n > 0)
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	while (nbr > 0)
 	{
-		str[--digits] = (n % 10) + '0';
-		n /= 10;
+		str[--len] = (nbr % 10) + 48;
+		nbr /= 10;
 	}
+	if (n < 0)
+		str[0] = '-';
+	if (n == 0)
+		str[0] = '0';
 	return (str);
 }

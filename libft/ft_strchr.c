@@ -6,7 +6,7 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:45:27 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 13:45:32 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/09 15:42:07 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	counter;
 
-	i = 0;
-	while (s[i] != '\0')
+	counter = 0;
+	while (s[counter])
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		if (s[counter] == (unsigned char)c)
+			return (&((char *)s)[counter]);
+		counter++;
 	}
-	if (c == '\0')
-		return ((char *)s + i);
+	if ((unsigned char)c == s[counter])
+		return (&((char *)s)[counter]);
 	return (NULL);
 }

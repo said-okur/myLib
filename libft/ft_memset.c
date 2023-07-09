@@ -6,12 +6,12 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 18:10:56 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 13:44:46 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/09 15:30:35 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//The memset() function writes len bytes of value c
-//(converted to an unsigned char) to the string b.
+#include "libft.h"
+
 void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;

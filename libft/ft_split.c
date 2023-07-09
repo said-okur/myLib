@@ -6,11 +6,9 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:45:14 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 13:45:15 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/09 15:28:44 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "libft.h"
 
@@ -41,7 +39,7 @@ char	**ft_split(char const *str, char delim)
 
 	if (!str)
 		return (NULL);
-	arr = (char **) ft_calloc(ft_words(str,delim) + 1, sizeof(char *));
+	arr = (char **) ft_calloc(ft_words(str, delim) + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
 	j = 0;

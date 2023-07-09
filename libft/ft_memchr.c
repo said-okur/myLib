@@ -6,7 +6,7 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 20:43:49 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 13:44:30 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/09 10:58:25 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-// unsigned char c memchr'dan ötürü. bkz man memchr.
