@@ -5,56 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 13:45:14 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/10 12:51:27 by sokur            ###   ########.fr       */
+/*   Created: 2023/07/12 13:20:54 by sokur             #+#    #+#             */
+/*   Updated: 2023/07/12 13:24:29 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	ft_words(const char *str, char delim)
+static unsigned int	ft_word_counter(const char *s, char control)
 {
-	unsigned int	words;
+	unsigned int	word;
 
-	words = 0;
-	while (*str)
+	word = 0;
+	while (*s)
 	{
-		if (*str == delim)
-			str++;
+		if (*s == control)
+			s++;
 		else
 		{
-			while (*str != delim && *str)
-				str++;
-			words++;
+			while (*s != control && *s)
+				s++;
+			word++;
 		}
 	}
-	return (words);
+	return (word);
 }
 
-char	**ft_split(char const *str, char delim)
+static unsigned int	ft_charlen(const char *s, char c)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+char	**free_all(char **result)
+{
+	int	i;
+
+	i = 0;
+	while (result[i])
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char			**arr;
-	unsigned int	i;
 	unsigned int	j;
+	unsigned int	a;
 
-	if (!str)
-		return (NULL);
-	arr = (char **) ft_calloc(ft_words(str, delim) + 1, sizeof(char *));
+	arr = (char **)malloc((ft_word_counter(s, c) + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
-	j = 0;
-	while (*str)
+	a = -1;
+	while (*s)
 	{
-		if (*str == delim)
-			str++;
-		else
+		while (*s == c)
+			s++;
+		if (*s)
 		{
-			i = 0;
-			while (*str != delim && *str && ++i)
-				str++;
-			arr[++j - 1] = (char *) ft_calloc(i + 1, sizeof(char));
-			ft_strlcpy(arr[j - 1], str - i, i + 1);
+			arr[++a] = (char *)malloc((ft_charlen(s, c) + 1) * sizeof(char));
+			if (!arr[a])
+				return (free_all(arr));
+			j = 0;
+			while (*s && *s != c)
+				arr[a][j++] = *s++;
+			arr[a][j] = '\0';
 		}
 	}
+		arr[++a] = NULL;
 	return (arr);
 }

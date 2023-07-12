@@ -6,7 +6,7 @@
 /*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:43:34 by sokur             #+#    #+#             */
-/*   Updated: 2023/07/08 18:05:44 by sokur            ###   ########.fr       */
+/*   Updated: 2023/07/11 12:20:46 by sokur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (lst == NULL)
-		return ;
-	if (*lst == NULL)
+	t_list	*last;
+
+	if (*lst)
 	{
-		*lst = new;
-		return ;
+		last = ft_lstlast(*lst);
+		last->next = new;
 	}
-	ft_lstlast(*(lst))->next = new;
+	else
+		*lst = new;
 }
